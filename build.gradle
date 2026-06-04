@@ -4,16 +4,12 @@ plugins {
 
 android {
     namespace 'com.example.imagecloud'
-    compileSdk {
-        version = release(36) {
-            minorApiLevel = 1
-        }
-    }
+    compileSdk 35
 
     defaultConfig {
         applicationId "com.example.imagecloud"
         minSdk 24
-        targetSdk 36
+        targetSdk 35
         versionCode 1
         versionName "1.0"
 
@@ -26,6 +22,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_11
         targetCompatibility JavaVersion.VERSION_11
@@ -33,18 +30,20 @@ android {
 }
 
 dependencies {
-
-    //picasso lib
+    // Picasso for Image Loading
     implementation 'com.squareup.picasso:picasso:2.8'
-    //cloudinary sdk
-    implementation 'com.cloudinary:cloudinary-android:2.2.0'
+    
+    // Cloudinary Android SDK
+    implementation 'com.cloudinary:cloudinary-android:3.0.0'
+    
+    // Core Android Jetpack & Material Design UI
     implementation libs.activity.ktx
     implementation libs.appcompat
     implementation libs.constraintlayout
     implementation libs.material
-    implementation libs.play.services.cast.tv
+    
+    // Testing Dependencies
     testImplementation libs.junit
     androidTestImplementation libs.espresso.core
     androidTestImplementation libs.ext.junit
-
 }
