@@ -1,5 +1,6 @@
 package com.example.imagecloud;
 
+import com.cloudinary.*;
 import com.cloudinary.android.MediaManager;
 import com.cloudinary.android.callback.ErrorInfo;
 import com.cloudinary.android.callback.UploadCallback;
@@ -94,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void selectImage() {
         Intent intent = new Intent();
-        intent.setType("image/*"); 
+        intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
         someActivityResultLauncher.launch(intent);
     }

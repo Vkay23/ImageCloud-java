@@ -1,15 +1,21 @@
 plugins {
     alias(libs.plugins.android.application)
+
+
 }
 
 android {
     namespace 'com.example.imagecloud'
-    compileSdk 35
+    compileSdk {
+        version = release(36) {
+            minorApiLevel = 1
+        }
+    }
 
     defaultConfig {
         applicationId "com.example.imagecloud"
         minSdk 24
-        targetSdk 35
+        targetSdk 36
         versionCode 1
         versionName "1.0"
 
@@ -22,7 +28,6 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-    
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_11
         targetCompatibility JavaVersion.VERSION_11
@@ -30,19 +35,16 @@ android {
 }
 
 dependencies {
-    // Picasso for Image Loading
     implementation 'com.squareup.picasso:picasso:2.8'
-    
-    // Cloudinary Android SDK
-    implementation 'com.cloudinary:cloudinary-android:3.0.0'
-    
-    // Core Android Jetpack & Material Design UI
+    // Upgrading to a verified release resolves the missing .aar error
+    implementation 'com.cloudinary:cloudinary-android:3.1.2'
+    implementation 'com.cloudinary:cloudinary-android-ui:3.1.2'
+    implementation 'com.cloudinary:cloudinary-android-preprocess:3.1.2'
     implementation libs.activity.ktx
     implementation libs.appcompat
     implementation libs.constraintlayout
     implementation libs.material
-    
-    // Testing Dependencies
+    implementation libs.play.services.cast.tv
     testImplementation libs.junit
     androidTestImplementation libs.espresso.core
     androidTestImplementation libs.ext.junit
